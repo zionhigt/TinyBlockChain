@@ -1,5 +1,5 @@
 from .block import Block
-from hashlib import sha3_512
+from chain._config import HASH_METHOD
 
 
 class Chain:
@@ -24,7 +24,7 @@ class Chain:
                 if previous_hash is None:
                     raise Block.NoBlockToLink()
             else:
-                previous_hash = sha3_512(b"first block in the chain !!!").hexdigest()
+                previous_hash = HASH_METHOD(b"first block in the chain !!!").hexdigest()
 
             block = Block(previous_hash)
             block.build(data)

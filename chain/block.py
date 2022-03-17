@@ -1,4 +1,4 @@
-from hashlib import sha3_512
+from chain._config import HASH_METHOD
 
 
 class Block:
@@ -47,7 +47,7 @@ class Block:
     def sign(self):
         self.isSigned = True
         if self._hash is None:
-            self._hash = sha3_512(str(self.get()).encode())
+            self._hash = HASH_METHOD(str(self.get()).encode())
         else:
             raise self.AlreadySignError()
         

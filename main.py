@@ -10,7 +10,8 @@ if __name__ == '__main__':
         "TUTU"
     ]
 
-    token = "e"
+    # You may turn token to None until proof of work will developed
+    token = "FAIL"
     for d in data:
         try:
             chain.inscript(d, token);

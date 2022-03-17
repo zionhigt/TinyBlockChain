@@ -1,14 +1,14 @@
 from re import M
 from chain.block import Block
-from hashlib import sha3_512
+from chain._config import HASH_METHOD
 
 
 def fixture_block():
     mock = {
-        "head_hash": sha3_512(b"TEST_HEAD"),
+        "head_hash": HASH_METHOD(b"TEST_HEAD"),
         "data": "TEST_DATA"
     }
-    mock_hash = sha3_512(str([mock.get("head_hash"), mock.get("data")]).encode()).hexdigest()
+    mock_hash = HASH_METHOD(str([mock.get("head_hash"), mock.get("data")]).encode()).hexdigest()
     mock.update({"hash": mock_hash})
 
     block = Block(mock.get("head_hash"))
